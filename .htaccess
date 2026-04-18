@@ -1,0 +1,12 @@
+Options -Indexes
+
+<FilesMatch "^(database\.sql|README\.md|\.env|composer\.(json|lock))$">
+    Require all denied
+</FilesMatch>
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+</IfModule>
